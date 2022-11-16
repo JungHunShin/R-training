@@ -11,7 +11,7 @@ data$job1[data$job == 2] <- "직장인"
 data$job1[data$job == 3] <- "주부"
 data$response1[data$response == 1] <- "무응답"
 data$response1[data$response == 2] <- "낮음"
-data$response1[data$response == 1] <- "높음"
+data$response1[data$response == 3] <- "높음"
 
 # 3) 교차 분할표 작성
 x <- data$job1
@@ -24,7 +24,7 @@ chisq.test(x,y)
 
 # 5) 검정결과 해석
 # p-value(0.0001189)<0.05 귀무가설을 기각한다.
-# 직업 유형에 따른 응답 정도에 차이가 있다
+# 직업 유형에 따른 응답 정도에 차이가 있다.
 
 # 2. 나이(age)와 직위(position)간의 관련성을 단계별로 분석하시오 (독립성 검정)
 # 1) 파일 가져오기
@@ -35,7 +35,8 @@ X <- data$position #행: 직위 변수 이용
 Y <- data$age3 #열: 나이 리코딩 변수 이용
 
 # 3) 산점도를 이용한 변수간의 관련성 보기
-plot(formula=X~Y, data=data)
+plot(formula=Y~X, data=data)
+plot(X,Y)
 
 # 4) 독립성 검정
 CrossTable(X, Y, chisq = TRUE)
